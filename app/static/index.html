@@ -10,24 +10,24 @@
 </head>
 <body>
   <div class="container">
+    <main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Sreality Flats</h1>
+        </div>
+      </section>
+    </main>
+
     <div class="row" id="flats-container">
     </div>
   </div>
 
   <script>
-    var card_ptn = '\
-    <div class="card">\
-      <img src="<<image-url>>" loading="lazy" alt="<<title>>" class="card-img-top">\
-      <div class="card-body">\
-        <div class="card-title"><<title>></div>\
-      </div>\
-    </div>';
-    var dom_parser = new DOMParser();
     var flats_container = document.getElementById('flats-container');
 
     var appendItem = function (item) {
       var card = document.createElement("div");
-      card.className = "card";
+      card.className = "card mb-4 box-shadow";
 
       var card_img = document.createElement("img");
       card_img.className = "card-img-top";
@@ -45,7 +45,7 @@
       card.append(card_body);
 
       var col = document.createElement('div');
-      col.className = 'col-4 mb-4';
+      col.className = 'col-md-4';
       col.append(card);
       flats_container.appendChild(col);
       return card_img;
