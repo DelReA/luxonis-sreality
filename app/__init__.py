@@ -2,6 +2,7 @@ from flask import Flask
 
 from config import Config
 from app.extensions import db
+from app.utils import crawl_flats
 
 
 def create_app(config_class=None):
@@ -28,6 +29,6 @@ def create_app(config_class=None):
 
   @app.cli.command("scrap")
   def scrap():
-    pass
+    crawl_flats()
 
   return app
