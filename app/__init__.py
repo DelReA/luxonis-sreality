@@ -15,4 +15,12 @@ def create_app(config_class=None):
   # Initialize Flask extensions here
   db.init_app(app)
 
+  @app.cli.command("migrate")
+  def migrate():
+    pass
+
+  @app.cli.command("scrap")
+  def scrap():
+    pass
+
   return app
