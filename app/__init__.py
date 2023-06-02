@@ -16,6 +16,9 @@ def create_app(config_class=None):
   # Initialize Flask extensions here
   db.init_app(app)
 
+  # Register api
+  from app.api import api
+  app.register_blueprint(api, url_prefix='/api')
 
   @app.cli.command("migrate")
   def migrate():
@@ -25,7 +28,6 @@ def create_app(config_class=None):
       db.session.commit()
 
     print("[INFO] Database migration has been done.")
-
 
   @app.cli.command("scrap")
   def scrap():
