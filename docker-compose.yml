@@ -17,7 +17,8 @@ services:
       - SECRET_KEY=SECRET_KEY
       - DATABASE_URI=postgresql://postgres:postgres@postgres:5432/luxonis_sreality
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
   
   postgres:
     image: postgres
@@ -29,6 +30,11 @@ services:
       - luxonis_sreality_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   luxonis_sreality_data:
